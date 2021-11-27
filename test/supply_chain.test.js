@@ -211,6 +211,7 @@ contract("SupplyChain", function (accounts) {
       var bobBalanceAfter = await web3.eth.getBalance(bob);
 
       const result = await instance.fetchItem.call(0);
+      
 
       assert.equal(
         result[3].toString(10),
@@ -247,7 +248,7 @@ contract("SupplyChain", function (accounts) {
 
       await instance.addItem(name, price, { from: alice });
       const tx = await instance.buyItem(0, { from: bob, value: excessAmount });
-
+ 
       if (tx.logs[0].event == "LogSold") {
         eventEmitted = true;
       }
